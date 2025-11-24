@@ -1,0 +1,151 @@
+/* Import Font Modern 'Poppins' */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --pln-blue: #007CA8;
+    --pln-yellow: #F9D923;
+    --bg-color: #F4F7FE;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: #333;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    background: linear-gradient(90deg, #006089 0%, #0091c2 100%); /* Biru PLN Gradient */
+    padding: 0.8rem 0;
+}
+
+.logo-box {
+    background: var(--pln-yellow);
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+    color: #000;
+}
+
+.btn-logout {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    transition: 0.3s;
+}
+.btn-logout:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+/* --- TOMBOL UTAMA --- */
+.btn-primary-custom {
+    background-color: var(--pln-blue);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.btn-primary-custom:hover {
+    background-color: #00567a;
+    transform: translateY(-2px);
+}
+
+/* --- STATS CARD (SOLID COLOR STYLE) --- */
+.stats-card {
+    border: none;
+    border-radius: 12px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Definisi Warna Gradient Kartu */
+.bg-blue-pln { background: linear-gradient(135deg, #007CA8, #005a7a); }
+.bg-green-success { background: linear-gradient(135deg, #10b981, #047857); }
+.bg-orange-warning { background: linear-gradient(135deg, #f59e0b, #b45309); }
+.bg-red-danger { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+
+.title-sm {
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 5px;
+}
+
+.icon-overlay {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3.5rem;
+    opacity: 0.15;
+    color: #fff;
+}
+
+/* --- TABEL --- */
+.table thead th {
+    background-color: #fafafa;
+    color: #8898aa;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.avatar-initial {
+    width: 40px; height: 40px;
+    background-color: #e9ecef;
+    color: #495057;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+    margin-right: 12px;
+}
+
+/* --- STATUS SELECT --- */
+.status-select {
+    border-radius: 30px;
+    font-size: 0.8rem;
+    padding: 5px 15px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    max-width: 150px;
+    transition: 0.2s;
+    background-position: right 0.5rem center; /* Geser panah dropdown */
+}
+
+/* Warna Status Spesifik */
+.status-menunggu { background-color: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+.status-disetujui { background-color: #ecfdf5; color: #15803d; border: 1px solid #dcfce7; }
+.status-ditolak { background-color: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-number { font-size: 2rem; }
+    .icon-overlay { font-size: 2.5rem; }
+}
