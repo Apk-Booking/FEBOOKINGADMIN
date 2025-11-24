@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tambah Ruang Rapat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- HEADER -->
+  <header class="w-full bg-blue-900 text-white p-4 flex items-center gap-4">
+    <button onclick="history.back()" class="text-2xl">←</button>
+    <h1 class="text-xl font-semibold flex items-center gap-2">⚡ Tambah Ruang Rapat</h1>
+  </header>
+
+  <div class="p-6 space-y-5">
+
+    <!-- Nama Ruang Rapat -->
+    <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 border">
+      <span class="text-blue-800 text-2xl">🏢</span>
+      <div class="w-full">
+        <p class="text-sm text-gray-500">Nama Ruang Rapat</p>
+        <input type="text" placeholder="Contoh: Ruang Rapat Utama" class="w-full bg-transparent outline-none">
+      </div>
+    </div>
+
+    <!-- Lokasi -->
+    <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 border">
+      <span class="text-blue-800 text-2xl">📍</span>
+      <div class="w-full">
+        <p class="text-sm text-gray-500">Lokasi Ruangan</p>
+        <input type="text" placeholder="Contoh: Lantai 2" class="w-full bg-transparent outline-none">
+      </div>
+    </div>
+
+    <!-- Kapasitas -->
+    <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 border">
+      <span class="text-blue-800 text-2xl">👥</span>
+      <div class="w-full">
+        <p class="text-sm text-gray-500">Kapasitas</p>
+        <input type="number" placeholder="Contoh: 20" class="w-full bg-transparent outline-none">
+      </div>
+    </div>
+
+    <!-- Fasilitas -->
+    <div class="bg-white p-4 rounded-lg shadow flex items-center gap-3 border">
+      <span class="text-blue-800 text-2xl">🧰</span>
+      <div class="w-full">
+        <p class="text-sm text-gray-500">Fasilitas</p>
+        <textarea placeholder="Proyektor, AC, TV, dll" class="w-full bg-transparent outline-none"></textarea>
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="w-full bg-blue-900 text-white py-3 rounded-lg font-semibold">Tambah Ruang Rapat</button>
+
+  </div>
+
+</body>
+</html>
