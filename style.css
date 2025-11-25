@@ -13,7 +13,9 @@ body {
     color: #333;
 }
 
-/* --- NAVBAR --- */
+/* =============================== */
+/*              NAVBAR             */
+/* =============================== */
 .navbar {
     background: linear-gradient(90deg, #006089 0%, #0091c2 100%);
     padding: 0.8rem 0;
@@ -22,9 +24,13 @@ body {
 .logo-box {
     background: var(--pln-yellow);
     width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 6px;
     color: #000;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 .btn-logout {
@@ -37,7 +43,9 @@ body {
     color: #fff;
 }
 
-/* --- TOMBOL UTAMA --- */
+/* =============================== */
+/*           BUTTON UTAMA          */
+/* =============================== */
 .btn-primary-custom {
     background-color: var(--pln-blue);
     border: none;
@@ -51,7 +59,13 @@ body {
     transform: translateY(-2px);
 }
 
+<<<<<<< HEAD
 /* --- STATS CARD --- */
+=======
+/* =============================== */
+/*           STATS CARD            */
+/* =============================== */
+>>>>>>> 1718b8d13e4942c7aa7382083d45a30be0e2027a
 .stats-card {
     border: none;
     border-radius: 12px;
@@ -60,18 +74,22 @@ body {
     overflow: hidden;
     min-height: 120px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    transition: 0.3s ease;
 }
-
 .stats-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+<<<<<<< HEAD
 .bg-blue-pln { background: linear-gradient(135deg, #007CA8, #005a7a); }
 .bg-green-success { background: linear-gradient(135deg, #10b981, #047857); }
+=======
+.bg-blue-pln       { background: linear-gradient(135deg, #007CA8, #005a7a); }
+.bg-green-success  { background: linear-gradient(135deg, #10b981, #047857); }
+>>>>>>> 1718b8d13e4942c7aa7382083d45a30be0e2027a
 .bg-orange-warning { background: linear-gradient(135deg, #f59e0b, #b45309); }
-.bg-red-danger { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+.bg-red-danger     { background: linear-gradient(135deg, #ef4444, #b91c1c); }
 
 .title-sm {
     letter-spacing: 0.5px;
@@ -82,7 +100,6 @@ body {
 .stats-number {
     font-size: 2.5rem;
     font-weight: 700;
-    line-height: 1.1;
     margin-top: 5px;
 }
 
@@ -96,7 +113,17 @@ body {
     color: #fff;
 }
 
-/* --- TABEL --- */
+/* =============================== */
+/*             TABLES              */
+/* =============================== */
+
+.table-container {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
 .table thead th {
     background-color: #fafafa;
     color: #8898aa;
@@ -113,6 +140,7 @@ body {
     border-bottom: 1px solid #f0f0f0;
 }
 
+<<<<<<< HEAD
 /* WARNA BACKGROUND BARIS TABEL (HIGHLIGHT) */
 .row-ditolak {
     background-color: #fff5f5 !important; /* Merah Muda */
@@ -121,36 +149,98 @@ body {
     background-color: #f6fffa !important; /* Hijau Muda */
 }
 
+=======
+/* Avatar Inisial */
+>>>>>>> 1718b8d13e4942c7aa7382083d45a30be0e2027a
 .avatar-initial {
-    width: 40px; height: 40px;
+    width: 40px;
+    height: 40px;
     background-color: #e9ecef;
     color: #495057;
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 600;
     margin-right: 12px;
+    font-size: 1rem;
 }
 
-/* --- STATUS SELECT --- */
+/* =============================== */
+/*             STATUS              */
+/* =============================== */
 .status-select {
-    border-radius: 30px;
+    border-radius: 30px !important;
     font-size: 0.8rem;
-    padding: 5px 15px;
+    padding: 5px 15px !important;
     font-weight: 600;
     border: 1px solid transparent;
     cursor: pointer;
-    text-align: center;
     width: 100%;
     max-width: 160px;
     transition: 0.2s;
+<<<<<<< HEAD
     background-position: right 0.5rem center;
 }
 
 .status-menunggu { background-color: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
 .status-disetujui { background-color: #ecfdf5; color: #15803d; border: 1px solid #dcfce7; }
 .status-ditolak { background-color: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+=======
+    background-position: right 0.5rem center !important;
+}
+
+/* Warna Status */
+.status-menunggu {
+    background-color: #fff7ed !important;
+    color: #c2410c !important;
+    border-color: #ffedd5 !important;
+}
+
+.status-disetujui {
+    background-color: #ecfdf5 !important;
+    color: #15803d !important;
+    border-color: #dcfce7 !important;
+}
+
+.status-ditolak {
+    background-color: #fef2f2 !important;
+    color: #b91c1c !important;
+    border-color: #fee2e2 !important;
+}
+
+/* =============================== */
+/*            HISTORY              */
+/* =============================== */
+.history-box {
+    background: white;
+    border-radius: 12px;
+    padding: 1.3rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.history-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.history-time {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* =============================== */
+/*          RESPONSIVE             */
+/* =============================== */
+>>>>>>> 1718b8d13e4942c7aa7382083d45a30be0e2027a
 
 @media (max-width: 768px) {
     .stats-number { font-size: 2rem; }
     .icon-overlay { font-size: 2.5rem; }
+
+    .status-select {
+        max-width: 100%;
+        margin-top: 6px;
+    }
 }
