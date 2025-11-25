@@ -1,5 +1,6 @@
-// --- DATA DUMMY / MOCKUP ---
-// Data ini akan muncul otomatis saat website dibuka tanpa backend
+// ===============================================
+//  DATA DUMMY BOOKING
+// ===============================================
 let bookings = [
     { id: 1, nama: "Budi Santoso", divisi: "Pemasaran", ruangan: "Ruang Rapat Utama Lt.1", tanggal: "2025-11-25", waktu: "09:00-11:00", status: "Disetujui" },
     { id: 2, nama: "Siti Aminah", divisi: "SDM & Umum", ruangan: "Ruang Meeting Direksi", tanggal: "2025-11-25", waktu: "13:00-15:00", status: "Menunggu" },
@@ -9,17 +10,65 @@ let bookings = [
     { id: 6, nama: "Joko Anwar", divisi: "Kreatif", ruangan: "Aula Serbaguna", tanggal: "2025-11-28", waktu: "13:00-16:00", status: "Menunggu" }
 ];
 
-// Jalankan saat halaman selesai dimuat
+// ===============================================
+//  DATA DUMMY HISTORY
+// ===============================================
+let historyList = [
+    {
+        nama: "Budi Santoso",
+        divisi: "Pemasaran",
+        ruangan: "Ruang Rapat Utama Lt.1",
+        tanggal: "2025-11-20",
+        waktu: "09:00-11:00",
+        status: "Disetujui",
+        inputTime: "2025-11-19 14:22"
+    },
+    {
+        nama: "Siti Aminah",
+        divisi: "SDM & Umum",
+        ruangan: "Ruang Meeting Direksi",
+        tanggal: "2025-11-21",
+        waktu: "13:00-15:00",
+        status: "Menunggu",
+        inputTime: "2025-11-20 10:51"
+    },
+    {
+        nama: "Andi Wijaya",
+        divisi: "Teknologi Informasi",
+        ruangan: "Lab Komputer",
+        tanggal: "2025-11-18",
+        waktu: "10:00-12:00",
+        status: "Ditolak - Penuh",
+        inputTime: "2025-11-17 09:11"
+    },
+    {
+        nama: "Rina Kartika",
+        divisi: "Keuangan",
+        ruangan: "Aula Serbaguna",
+        tanggal: "2025-11-22",
+        waktu: "15:00-17:00",
+        status: "Disetujui",
+        inputTime: "2025-11-21 16:30"
+    }
+];
+
+
+// ===============================================
+//  LOAD AWAL HALAMAN
+// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
     renderTable();
     updateCards();
+    renderHistory();
 });
 
-// --- FUNGSI RENDER TAMPILAN ---
 
+// ===============================================
+//  RENDER TABEL BOOKING
+// ===============================================
 function renderTable() {
     const tbody = document.getElementById('table-body');
-    tbody.innerHTML = ""; // Bersihkan tabel sebelum isi ulang
+    tbody.innerHTML = "";
 
     if (bookings.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-muted">Belum ada data booking.</td></tr>`;
@@ -27,12 +76,10 @@ function renderTable() {
     }
 
     bookings.forEach(item => {
-        // Logika warna status
         let statusClass = "status-menunggu";
         if (item.status === "Disetujui") statusClass = "status-disetujui";
         else if (item.status.includes("Ditolak")) statusClass = "status-ditolak";
 
-        // Ambil huruf pertama nama untuk avatar
         const initial = item.nama.charAt(0).toUpperCase();
 
         const row = `
@@ -58,7 +105,7 @@ function renderTable() {
                             onchange="updateStatus(${item.id}, this.value)">
                         <option value="Menunggu" ${item.status === 'Menunggu' ? 'selected' : ''}>⏳ Menunggu</option>
                         <option value="Disetujui" ${item.status === 'Disetujui' ? 'selected' : ''}>✅ Disetujui</option>
-                        <option value="Ditolak - Penuh" ${item.status === 'Ditolak - Penuh' ? 'selected' : ''}>❌ Ditolak</option>
+                        <option value="Ditolak - Penuh" ${item.status.includes("Ditolak") ? 'selected' : ''}>❌ Ditolak</option>
                     </select>
                 </td>
                 <td class="text-center">
@@ -72,22 +119,26 @@ function renderTable() {
     });
 }
 
+
+// ===============================================
+//  KARTU INFORMASI TOTAL BOOKING
+// ===============================================
 function updateCards() {
-    // Hitung jumlah data
     const total = bookings.length;
     const disetujui = bookings.filter(b => b.status === "Disetujui").length;
     const menunggu = bookings.filter(b => b.status === "Menunggu").length;
     const ditolak = bookings.filter(b => b.status.includes("Ditolak")).length;
 
-    // Masukkan angka ke HTML
     document.getElementById('count-total').innerText = total;
     document.getElementById('count-disetujui').innerText = disetujui;
     document.getElementById('count-menunggu').innerText = menunggu;
     document.getElementById('count-ditolak').innerText = ditolak;
 }
 
-// --- FUNGSI INTERAKSI (SIMPAN, HAPUS, UPDATE) ---
 
+// ===============================================
+//  SIMPAN BOOKING BARU
+// ===============================================
 function simpanData() {
     const nama = document.getElementById('inputNama').value;
     const divisi = document.getElementById('inputDivisi').value;
@@ -102,39 +153,89 @@ function simpanData() {
     }
 
     const newData = {
-        id: Date.now(), // ID Unik dari waktu sekarang
+        id: Date.now(),
         nama, divisi, ruangan, tanggal, waktu, status
     };
 
-    bookings.push(newData); // Tambah ke array
-    
-    // Reset Form & Tutup Modal
-    document.getElementById('bookingForm').reset();
-    const modalEl = document.getElementById('modalBooking');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
+    bookings.push(newData);
 
-    // Render Ulang
+    tambahHistory(newData);
+
+    document.getElementById('bookingForm').reset();
+    bootstrap.Modal.getInstance(document.getElementById('modalBooking')).hide();
+
     renderTable();
     updateCards();
-    
-    // Notifikasi kecil (Opsional)
-    // alert("Data berhasil disimpan!");
+    renderHistory();
 }
 
+
+// ===============================================
+//  UPDATE STATUS
+// ===============================================
 function updateStatus(id, newStatus) {
     const index = bookings.findIndex(b => b.id === id);
     if (index !== -1) {
         bookings[index].status = newStatus;
-        renderTable(); // Render ulang agar warna dropdown berubah
-        updateCards(); // Update angka di kartu atas
+        renderTable();
+        updateCards();
     }
 }
 
+
+// ===============================================
+//  HAPUS BOOKING
+// ===============================================
 function hapusData(id) {
     if (confirm("Yakin ingin menghapus data booking ini?")) {
         bookings = bookings.filter(b => b.id !== id);
         renderTable();
         updateCards();
     }
+}
+
+
+// ===============================================
+//  HISTORY
+// ===============================================
+function tambahHistory(data) {
+    const waktuNow = new Date().toLocaleString("id-ID");
+
+    const historyItem = {
+        nama: data.nama,
+        divisi: data.divisi,
+        ruangan: data.ruangan,
+        tanggal: data.tanggal,
+        waktu: data.waktu,
+        status: data.status,
+        inputTime: waktuNow
+    };
+
+    historyList.push(historyItem);
+}
+
+function renderHistory() {
+    const tbody = document.getElementById("history-body");
+    tbody.innerHTML = "";
+
+    if (historyList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center py-3 text-muted">Belum ada data history.</td></tr>`;
+        return;
+    }
+
+    historyList.forEach(item => {
+        const row = `
+            <tr>
+                <td class="ps-4">
+                    <strong>${item.nama}</strong>
+                    <br><span class="text-muted small">${item.divisi}</span>
+                </td>
+                <td>${item.ruangan}</td>
+                <td>${item.tanggal} • ${item.waktu}</td>
+                <td><span class="badge bg-secondary">${item.status}</span></td>
+                <td class="text-muted small">${item.inputTime}</td>
+            </tr>
+        `;
+        tbody.innerHTML += row;
+    });
 }
